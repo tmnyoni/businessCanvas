@@ -1,0 +1,17 @@
+<h5>Customer Segments</h5>
+<ul class="list-group">
+    {% for customer in customers %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ customer.segment }}
+        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-customer-segment' customer.id %}"> x
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<form class="form-inline mt-3" action="{% url 'canvas:add-customer-segment' %}" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" name="segment" type="text" placeholder="type.." aria-label="Segment" />
+    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+        Add
+    </button>
+</form>

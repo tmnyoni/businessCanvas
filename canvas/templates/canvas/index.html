@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'canvas/css/bootstrap.css'%}" />
+    <title>
+        Document
+    </title>
+</head>
+
+<body>
+    {% block navbar %}
+    {% include 'canvas/navbar.html' %}
+    {% endblock %}
+
+    <div class="container mb-5">
+        <h1 class="mt-4"> Business Model Canvas </h1>
+        <div class="row justify-content-center border">
+            <div class="row py-2">
+                <div class="col">
+                    {% block partnership %}
+                    {% include 'canvas/partnership.html' %}
+                    {% endblock %}
+                </div>
+                <div class="col">
+                    <div class="mb-4">
+                        {% block activities %}
+                        {% include 'canvas/activities.html' %}
+                        {% endblock %}
+                    </div>
+
+                    <div>
+                        {% block resources %}
+                        {% include 'canvas/resources.html' %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col">
+                    {% block propositions %}
+                    {% include 'canvas/propositions.html' %}
+                    {% endblock %}
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        {% block customer-relationships %}
+                        {% include 'canvas/customer-relationships.html' %}
+                        {% endblock %}
+                    </div>
+                    <div>
+                        {% block channels %}
+                        {% include 'canvas/channels.html' %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col">
+                    {% block customer-segments %}
+                    {% include 'canvas/customer-segments.html' %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col">
+                    {% block cost-structure %}
+                    {% include 'canvas/cost-structure.html' %}
+                    {% endblock %}
+                </div>
+                <div class="col">
+                    {% block revenue-streams %}
+                    {% include 'canvas/revenue-streams.html' %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

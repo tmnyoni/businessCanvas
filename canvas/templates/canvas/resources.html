@@ -1,0 +1,18 @@
+<h5>Key Resources</h5>
+<ul class="list-group">
+    {% for resource in resources %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ resource.resource }}
+        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-resource' resource.id %}">
+            x
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<form class="form-inline mt-3" action="{% url 'canvas:add-resource' %}" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" name="resource" type="text" placeholder="type.." aria-label="resource" />
+    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+        Add
+    </button>
+</form>
