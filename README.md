@@ -1,6 +1,6 @@
 ## THE BUSINESS MODEL CANVAS
 
-The Business Model Canvas is a strategic management template for creating new business models and documenting existing ones. It provides a visual chart with pieces detailing a firm's or product's value proposition, infrastructure, consumers, and finances, supporting firms in aligning their operations by demonstrating potential trade-offs.
+The Business Model Canvas is a strategic management template for creating new <a href="https://en.wikipedia.org/wiki/Business_model"> business models </a> and documenting existing ones. It provides a visual chart with pieces detailing a firm's or product's value proposition, infrastructure, consumers, and finances, supporting firms in aligning their operations by demonstrating potential trade-offs.
 
 #### Installation
 1. Create a virtual environment where you will install your packages.<br />
