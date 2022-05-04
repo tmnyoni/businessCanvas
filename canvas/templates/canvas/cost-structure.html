@@ -1,18 +1,31 @@
-<h5>Cost Structure</h5>
-<ul class="list-group">
-    {% for cost_structure in cost_structures %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ cost_structure.structure }}
-        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-cost-structure' cost_structure.id %}">
-            x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-cost-structure' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="structure" type="text" placeholder="type.." aria-label="Structure" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6>
+        Cost Structure
+    </h6>
+    <ul class="list-group">
+        {% if cost_structures %}
+        {% for cost_structure in cost_structures %}
+        <li>
+            <div>
+                <span class="counter"> {{ forloop.counter }}</span>
+                {{ cost_structure.structure }}
+            </div>
+            <a class="close-btn" href=" {% url 'canvas:delete-cost-structure' cost_structure.id %}">
+                x
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p class="text-secondary">
+            No cost structures
+        </p>
+        {% endif %}
+    </ul>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-cost-structure' %}" method="post">
+        {% csrf_token %}
+        <input name="structure" type="text" placeholder="Add Cost Structure" aria-label="Structure" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>

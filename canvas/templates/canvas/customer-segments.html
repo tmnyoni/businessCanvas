@@ -1,17 +1,30 @@
-<h5>Customer Segments</h5>
-<ul class="list-group">
-    {% for customer in customers %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ customer.segment }}
-        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-customer-segment' customer.id %}"> x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-customer-segment' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="segment" type="text" placeholder="type.." aria-label="Segment" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6>
+        Customer Segments
+    </h6>
+    <ul class="list-group">
+        {% if customers %}
+        {% for customer in customers %}
+        <li>
+            <div>
+                <span class="counter"> {{ forloop.counter }}</span>
+                {{ customer.segment }}
+            </div>
+            <a class="close-btn" href="{% url 'canvas:delete-customer-segment' customer.id %}"> x
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p class="text-secondary">
+            No Customer segments
+        </p>
+        {% endif %}
+    </ul>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-customer-segment' %}" method="post">
+        {% csrf_token %}
+        <input name="segment" type="text" placeholder="Add Customer Segment" aria-label="Segment" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>

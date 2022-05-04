@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+
     {% load static %}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="{% static 'canvas/css/bootstrap.css'%}" />
+    <link rel="stylesheet" href="{% static 'canvas/css/styles.css'%}" />
     <title>
         Document
     </title>
@@ -20,8 +24,8 @@
 
     <div class="container mb-5">
         <h1 class="mt-4"> Business Model Canvas </h1>
-        <div class="row justify-content-center border">
-            <div class="row py-2">
+        <div class="row justify-content-center border py-4">
+            <div class="row pb-4">
                 <div class="col">
                     {% block partnership %}
                     {% include 'canvas/partnership.html' %}
@@ -63,6 +67,7 @@
                     {% endblock %}
                 </div>
             </div>
+            <hr />
             <div class="row py-2">
                 <div class="col">
                     {% block cost-structure %}

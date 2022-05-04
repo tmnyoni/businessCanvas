@@ -1,18 +1,31 @@
-<h5>Key Resources</h5>
-<ul class="list-group">
-    {% for resource in resources %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ resource.resource }}
-        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-resource' resource.id %}">
-            x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-resource' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="resource" type="text" placeholder="type.." aria-label="resource" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6>
+        Key Resources
+    </h6>
+    <ul class="list-group">
+        {% if resources %}
+        {% for resource in resources %}
+        <li>
+            <div>
+                <span class="counter green-counter"> {{ forloop.counter }}</span>
+                {{ resource.resource }}
+            </div>
+            <a class="close-btn" href="{% url 'canvas:delete-resource' resource.id %}">
+                x
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p class="text-secondary">
+            No key resources
+        </p>
+        {% endif %}
+    </ul>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-resource' %}" method="post">
+        {% csrf_token %}
+        <input name="resource" type="text" placeholder="Add Key Resource" aria-label="resource" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>

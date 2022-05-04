@@ -1,18 +1,31 @@
-
-<ul class="list-group list-group-flush">
-    {% for partner in partners%}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ partner.partner }}
-        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-partnership' partner.id %}">
-            x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-partnership' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="partner" type="text" placeholder="type.." aria-label="Partner" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6> Key Partnership </h6>
+    <div class="list-container">
+        <ul class="list-group">
+            {% if partners %}
+            {% for partner in partners%}
+            <li class="show">
+                <div>
+                    <span class="counter"> {{ forloop.counter }}</span>
+                    {{ partner.partner }}
+                </div>
+                <a class="close-btn" href="{% url 'canvas:delete-partnership' partner.id %}">
+                    x
+                </a>
+            </li>
+            {% endfor %}
+            {% else %}
+            <p class="text-secondary">
+                No key partnerships
+            </p>
+            {% endif %}
+        </ul>
+    </div>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-partnership' %}" method="post">
+        {% csrf_token %}
+        <input name="partner" type="text" placeholder="Add Partnership" aria-label="Partner" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>

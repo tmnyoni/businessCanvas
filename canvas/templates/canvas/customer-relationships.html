@@ -1,20 +1,31 @@
-<h5>Customer Relationships</h5>
-<ul class="list-group">
-    {% for relationship in customer_relationships %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ relationship.relationship }}
-        <a class="btn btn-sm text-danger fw-bolder"
-            href="{% url 'canvas:delete-customer-relationship' relationship.id %}">
-            x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-customer-relationship' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="relationship" type="text" placeholder="type.."
-        aria-label="Relationship" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6>
+        Customer Relationships
+    </h6>
+    <ul class="list-group">
+        {% if customer_relationships %}
+        {% for relationship in customer_relationships %}
+        <li>
+            <div>
+                <span class="counter green-counter"> {{ forloop.counter }}</span>
+                {{ relationship.relationship }}
+            </div>
+            <a class="close-btn" href="{% url 'canvas:delete-customer-relationship' relationship.id %}">
+                x
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p class="text-secondary">
+            No customer relationships
+        </p>
+        {% endif %}
+    </ul>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-customer-relationship' %}" method="post">
+        {% csrf_token %}
+        <input name="relationship" type="text" placeholder="Add Customer Relationship" aria-label="Relationship" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>

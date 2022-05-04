@@ -1,18 +1,29 @@
-<h5>Value Propositions</h5>
-<ul class="list-group">
-    {% for proposition in propositions %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ proposition.proposition }}
-        <a class="btn btn-sm text-danger fw-bolder" href="{% url 'canvas:delete-proposition' proposition.id %}">
-            x
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-<form class="form-inline mt-3" action="{% url 'canvas:add-proposition' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" name="proposition" type="text" placeholder="type.." aria-label="proposition" />
-    <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
-        Add
-    </button>
-</form>
+<div class="section">
+    <h6>Value Propositions</h6>
+    <ul class="list-group">
+        {%if propositions %}
+        {% for proposition in propositions %}
+        <li>
+            <div>
+                <span class="counter"> {{ forloop.counter }}</span>
+                {{ proposition.proposition }}
+            </div>
+            <a class="close-btn" href="{% url 'canvas:delete-proposition' proposition.id %}">
+                x
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p class="text-secondary">
+            No value propositions
+        </p>
+        {% endif %}
+    </ul>
+    <form class="form-inline mt-3" action="{% url 'canvas:add-proposition' %}" method="post">
+        {% csrf_token %}
+        <input name="proposition" type="text" placeholder="Add Proposition" aria-label="proposition" />
+        <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">
+            Add
+        </button>
+    </form>
+</div>
