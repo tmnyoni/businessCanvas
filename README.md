@@ -10,10 +10,10 @@ The Business Model Canvas is a strategic management template for creating new bu
 ```Linux/MacOS -  . venv/bin/activate```<br />
 ```Windows - venv/scripts/activate```
 
-4. Run the following command.<br /><br />
+3. Run the following command.<br />
 ```py -m pip install -r requirements.txt```
 
-5. Run the following to start developing<br />
+4. Run the following to start developing<br />
 ```Cd project dir```<br />
 ```py manage.py runserver```
 
