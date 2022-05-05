@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% load pwa %}
+
 <head>
-    {% load pwa %}
     {% progressive_web_app_meta %}
 
     {% load static %}
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'canvas/css/bootstrap.css'%}" />
     <link rel="stylesheet" href="{% static 'canvas/css/styles.css'%}" />
     <title>
-        Document
+        Home - Bussiness Canvas Model
     </title>
 </head>
 
@@ -28,42 +29,42 @@
             <div class="row pb-4">
                 <div class="col">
                     {% block partnership %}
-                    {% include 'canvas/partnership.html' %}
+                    {% include 'canvas/components/partnership.html' %}
                     {% endblock %}
                 </div>
                 <div class="col">
                     <div class="mb-4">
                         {% block activities %}
-                        {% include 'canvas/activities.html' %}
+                        {% include 'canvas/components/activities.html' %}
                         {% endblock %}
                     </div>
 
                     <div>
                         {% block resources %}
-                        {% include 'canvas/resources.html' %}
+                        {% include 'canvas/components/resources.html' %}
                         {% endblock %}
                     </div>
                 </div>
                 <div class="col">
                     {% block propositions %}
-                    {% include 'canvas/propositions.html' %}
+                    {% include 'canvas/components/propositions.html' %}
                     {% endblock %}
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         {% block customer-relationships %}
-                        {% include 'canvas/customer-relationships.html' %}
+                        {% include 'canvas/components/customer-relationships.html' %}
                         {% endblock %}
                     </div>
                     <div>
                         {% block channels %}
-                        {% include 'canvas/channels.html' %}
+                        {% include 'canvas/components/channels.html' %}
                         {% endblock %}
                     </div>
                 </div>
                 <div class="col">
                     {% block customer-segments %}
-                    {% include 'canvas/customer-segments.html' %}
+                    {% include 'canvas/components/customer-segments.html' %}
                     {% endblock %}
                 </div>
             </div>
@@ -71,12 +72,12 @@
             <div class="row py-2">
                 <div class="col">
                     {% block cost-structure %}
-                    {% include 'canvas/cost-structure.html' %}
+                    {% include 'canvas/components/cost-structure.html' %}
                     {% endblock %}
                 </div>
                 <div class="col">
                     {% block revenue-streams %}
-                    {% include 'canvas/revenue-streams.html' %}
+                    {% include 'canvas/components/revenue-streams.html' %}
                     {% endblock %}
                 </div>
             </div>

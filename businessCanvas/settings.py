@@ -3,7 +3,6 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-PWA_SERVICE_WORKER_PATH = Path(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -100,13 +99,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
 STATIC_URL_ROOT = Path(BASE_DIR, "/static")
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # PWA.
+# PWA_SERVICE_WORKER_PATH = Path(BASE_DIR, 'static/js', 'serviceworker.js')
 PWA_APP_NAME = 'BusinessModelCanvas'
 PWA_APP_DESCRIPTION = "Business Model Canvas"
 PWA_APP_THEME_COLOR = '#000000'
@@ -116,6 +121,7 @@ PWA_APP_SCOPE = '/'
 PWA_APP_ORIENTATION = 'any'
 PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_DEBUG_MODE = False
 PWA_APP_ICONS = [
     {
         'src': 'static/images/icon-152x152.png',
