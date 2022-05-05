@@ -2,11 +2,13 @@ from importlib.resources import Resource
 from pyexpat import model
 from django.views.generic import DeleteView
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .models import *
 from .forms import *
 
 
+@login_required
 def index(request):
     partners = KeyPartner.objects.all()
     activities = KeyActivity.objects.all()
@@ -32,7 +34,7 @@ def index(request):
 
 
 # Partnership.
-
+@login_required
 def addPartnership(request):
     partner = request.POST["partner"]
     form = AddPartnershipForm({"partner": partner})
@@ -41,6 +43,7 @@ def addPartnership(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deletePartnership(request, id=None):
     object = get_object_or_404(KeyPartner, id=id)
     object.delete()
@@ -49,6 +52,7 @@ def deletePartnership(request, id=None):
 
 # Activities
 
+@login_required
 def addActivity(request):
     activity = request.POST["activity"]
     form = AddActivityForm({"activity": activity})
@@ -57,6 +61,7 @@ def addActivity(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteActivity(request, id=None):
     object = get_object_or_404(KeyActivity, id=id)
     object.delete()
@@ -65,6 +70,7 @@ def deleteActivity(request, id=None):
 
 # Resources.
 
+@login_required
 def addResource(request):
     resource = request.POST["resource"]
     form = AddResourceForm({"resource": resource})
@@ -73,6 +79,7 @@ def addResource(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteResource(request, id=None):
     object = get_object_or_404(KeyResource, id=id)
     object.delete()
@@ -81,6 +88,7 @@ def deleteResource(request, id=None):
 # Propositions
 
 
+@login_required
 def addProposition(request):
     proposition = request.POST["proposition"]
     form = AddPropositionForm({"proposition": proposition})
@@ -89,6 +97,7 @@ def addProposition(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteProposition(request, id=None):
     object = get_object_or_404(ValueProposition, id=id)
     object.delete()
@@ -97,6 +106,7 @@ def deleteProposition(request, id=None):
 # Customer Relationship
 
 
+@login_required
 def addCustomerRelationship(request):
     relationship = request.POST["relationship"]
     form = AddCustomerRelationshipForm({"relationship": relationship})
@@ -105,6 +115,7 @@ def addCustomerRelationship(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteCustomerRelationship(request, id=None):
     object = get_object_or_404(CustomerRelationship, id=id)
     object.delete()
@@ -113,6 +124,7 @@ def deleteCustomerRelationship(request, id=None):
 # Channels
 
 
+@login_required
 def addChannel(request):
     channel = request.POST["channel"]
     form = AddChannelForm({"channel": channel})
@@ -121,6 +133,7 @@ def addChannel(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteChannel(request, id=None):
     object = get_object_or_404(Channel, id=id)
     object.delete()
@@ -129,6 +142,7 @@ def deleteChannel(request, id=None):
 
 # Customer Segments
 
+@login_required
 def addCustomerSegment(request):
     segment = request.POST["segment"]
     form = AddCustomerSegmentForm({"segment": segment})
@@ -137,6 +151,7 @@ def addCustomerSegment(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteCustomerSegment(request, id=None):
     object = get_object_or_404(CustomerSegment, id=id)
     object.delete()
@@ -145,6 +160,7 @@ def deleteCustomerSegment(request, id=None):
 
 # Cost Structure
 
+@login_required
 def addCostStructure(request):
     structure = request.POST["structure"]
     form = AddCostStructureForm({"structure": structure})
@@ -153,6 +169,7 @@ def addCostStructure(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteCostStructure(request, id=None):
     object = get_object_or_404(CostStructure, id=id)
     object.delete()
@@ -161,6 +178,7 @@ def deleteCostStructure(request, id=None):
 
 # Revenue Streams
 
+@login_required
 def addRevenueStream(request):
     stream = request.POST["stream"]
     form = AddRevenueStreamForm({"stream": stream})
@@ -169,6 +187,7 @@ def addRevenueStream(request):
     return redirect('canvas:index')
 
 
+@login_required
 def deleteRevenueStream(request, id=None):
     object = get_object_or_404(RevenueStream, id=id)
     object.delete()
