@@ -192,3 +192,15 @@ def deleteRevenueStream(request, id=None):
     object = get_object_or_404(RevenueStream, id=id)
     object.delete()
     return redirect('canvas:index')
+
+
+def about(request):
+    return render(request, "canvas/about.html", {})
+
+
+def features(request):
+    return render(request, "canvas/features.html", {})
+
+
+def contact(request):
+    return render(request, "canvas/contact.html", {})

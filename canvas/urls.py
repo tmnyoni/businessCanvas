@@ -41,4 +41,7 @@ urlpatterns = [
          views.addRevenueStream, name="add-revenue-stream"),
     path("revenue-streams/<int:id>/delete",
          views.deleteRevenueStream, name="delete-revenue-stream"),
+    path("about", views.about, name="about"),
+    path("features", views.features, name="features"),
+    path("contact", views.contact, name="contact"),
 ]

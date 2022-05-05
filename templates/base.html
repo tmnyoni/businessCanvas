@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load pwa %}
+
+<head>
+    {% progressive_web_app_meta %}
+
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}" />
+    <title>
+        Home - Bussiness Canvas Model
+    </title>
+</head>
+
+<body>
+    {% block navbar %}
+    {% include 'components/navbar.html' %}
+    {% endblock %}
+
+    {% block main %}
+    <!-- Put content here -->
+    {% endblock %}
+</body>
+
+</html>
